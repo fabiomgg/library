@@ -72,4 +72,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 
+  # Add shoulda-matchers for test suite
+  gem "shoulda-matchers", "~> 6.0"
 end
