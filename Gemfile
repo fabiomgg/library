@@ -54,6 +54,9 @@ group :development, :test do
 
   # Add rspec for test suite
   gem "rspec-rails", "~> 6.1.0"
+
+  # Add factory bot rails for test suite
+  gem "factory_bot_rails", "~> 6.4.3"
 end
 
 group :development do
