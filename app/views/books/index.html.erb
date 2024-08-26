@@ -1,5 +1,13 @@
 <h2>Book Management</h2>
 
+<%= form_with url: books_path, method: :get, local: true do %>
+  <div class="field">
+    <%= label_tag :search, "Search Books:" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", class: "button" %>
+  </div>
+<% end %>
+
 <table>
   <thead>
     <tr>

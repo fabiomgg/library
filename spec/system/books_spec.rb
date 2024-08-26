@@ -6,6 +6,18 @@ RSpec.describe 'Books', type: :system do
   let!(:member) { create(:user, :member) }
   let!(:book) { create(:book) }
 
+  context 'searching' do
+    it 'shows books that match the search term in title' do
+      login_as member
+      visit books_path
+
+      fill_in 'Search', with: book.title
+      click_button 'Search'
+
+      expect(page).to have_content(book.title)
+    end
+  end
+
   context 'as a librarian' do
     before { login_as(librarian) }
 
