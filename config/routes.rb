@@ -12,4 +12,11 @@ Rails.application.routes.draw do
   end
   get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/error', to: 'errors#unauthorized', as: 'error'
+
+  namespace :api do
+    namespace :v1 do
+      devise_for :users, controllers: { sessions: 'api/v1/sessions' }
+      resources :books
+    end
+  end
 end
