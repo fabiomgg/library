@@ -10,5 +10,6 @@ Rails.application.routes.draw do
       post 'return', on: :collection
     end
   end
+  get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   get '/error', to: 'errors#unauthorized', as: 'error'
 end

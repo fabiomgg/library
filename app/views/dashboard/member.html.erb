@@ -1,0 +1,40 @@
+<h1>Dashboard</h1>
+
+<h2>Your Borrowed Books</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Borrowed On</th>
+      <th>Due Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @borrowed_books.each do |borrow| %>
+      <tr>
+        <td><%= borrow.book.title %></td>
+        <td><%= borrow.borrowed_at.to_date %></td>
+        <td><%= borrow.due_at.to_date %></td>
+        <td>
+          <% if borrow.due_at < Date.today %>
+            <span style="color: red;">Overdue</span>
+          <% else %>
+            On Time
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Your Overdue Books</h2>
+<% if @overdue_books.any? %>
+  <ul>
+    <% @overdue_books.each do |borrow| %>
+      <li><%= borrow.book.title %> (Due: <%= borrow.due_at.to_date %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No overdue books.</p>
+<% end %>

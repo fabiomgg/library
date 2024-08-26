@@ -1,0 +1,29 @@
+<h1>Dashboard</h1>
+
+<p><strong>Total Books:</strong> <%= @total_books %></p>
+<p><strong>Total Borrowed Books:</strong> <%= @total_borrowed_books %></p>
+<p><strong>Books Due Today:</strong> <%= @books_due_today.count %></p>
+
+<h2>Members with Overdue Books</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Member Email</th>
+      <th>Overdue Books</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @overdue_members.each do |member| %>
+      <tr>
+        <td><%= member.email %></td>
+        <td>
+          <ul>
+            <% member.borrowings.overdue.each do |borrow| %>
+              <li><%= borrow.book.title %> (Due: <%= borrow.due_at.to_date %>)</li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
