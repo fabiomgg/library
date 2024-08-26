@@ -7,4 +7,8 @@ class Book < ApplicationRecord
   scope :search, ->(term) {
     where("title LIKE :term OR author LIKE :term OR genre LIKE :term", term: "%#{term}%") if term.present?
   }
+
+  def available_copies
+    total_copies - borrowings.where(returned_at: nil).count
+  end
 end

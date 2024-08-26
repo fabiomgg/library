@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :books
+  resources :books do
+    resources :borrowings, only: [:create] do
+      post 'return', on: :collection
+    end
+  end
   get '/error', to: 'errors#unauthorized', as: 'error'
 end
