@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "app", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h2>Library</h2>
+        <%= link_to 'Book Management', books_path %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+      </div>
+
+      <div class="content">
+        <b><%= notice %></b>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
